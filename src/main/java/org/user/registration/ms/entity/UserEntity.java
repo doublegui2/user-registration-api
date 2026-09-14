@@ -2,6 +2,8 @@ package org.user.registration.ms.entity;
 
 import jakarta.persistence.*;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -27,12 +29,16 @@ public class UserEntity {
     @Column
     private String gender;
 
+    @Column
+    private Instant createdAt;
+
     public UserEntity(String username, String birthdate, String countryOfResidence, String phoneNumber, String gender) {
         this.setUsername(username);
         this.setBirthdate(birthdate);
         this.setCountryOfResidence(countryOfResidence);
         this.setPhoneNumber(phoneNumber);
         this.setGender(gender);
+        this.createdAt = Instant.now();
     }
 
     protected UserEntity() { }
