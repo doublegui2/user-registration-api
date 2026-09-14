@@ -1,5 +1,6 @@
 package org.user.registration.ms.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import org.user.registration.ms.exception.IllegalBirthdateFormatException;
 import org.user.registration.ms.exception.IllegalCountryException;
 import org.user.registration.ms.validator.ISO8601Validator;
@@ -7,9 +8,19 @@ import org.user.registration.ms.validator.ISO8601Validator;
 import java.util.Locale;
 
 public record UserRegistrationRequestDto(
+
+        @NotBlank
         String username,
+
+        @NotBlank
         String birthdate,
-        String countryOfResidence
+
+        @NotBlank
+        String countryOfResidence,
+
+        String phoneNumber,
+
+        String gender
 ) {
     public UserRegistrationRequestDto {
         // Check if the birthdate follows the appropriate ISO-8601 format

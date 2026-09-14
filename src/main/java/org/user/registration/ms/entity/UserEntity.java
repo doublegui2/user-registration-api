@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue
@@ -21,6 +21,21 @@ public class User {
     // ISO 3-letter format
     private String countryOfResidence;
 
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private String gender;
+
+    public UserEntity(String username, String birthdate, String countryOfResidence, String phoneNumber, String gender) {
+        this.setUsername(username);
+        this.setBirthdate(birthdate);
+        this.setCountryOfResidence(countryOfResidence);
+        this.setPhoneNumber(phoneNumber);
+        this.setGender(gender);
+    }
+
+    protected UserEntity() { }
 
     private String getUsername() {
         return this.username;
@@ -43,5 +58,17 @@ public class User {
         this.countryOfResidence = countryOfResidence;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
