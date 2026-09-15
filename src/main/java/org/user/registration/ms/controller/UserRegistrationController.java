@@ -15,7 +15,7 @@ import org.user.registration.ms.service.UserService;
 @RequestMapping("/user")
 public class UserRegistrationController {
 
-    private UserService userService;
+    private final UserService userService;
 
     public UserRegistrationController(UserService userService) {
         this.userService = userService;
