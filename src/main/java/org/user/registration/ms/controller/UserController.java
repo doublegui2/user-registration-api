@@ -34,4 +34,12 @@ public class UserController {
                 .body(userResponseDto);
     }
 
+    @GetMapping("/view/{id}")
+    public ResponseEntity<UserResponseDto> viewUser(@PathVariable Long id) {
+        UserResponseDto userResponseDto = this.userService.view(id);
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .body(userResponseDto);
+    }
+
 }

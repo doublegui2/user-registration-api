@@ -49,4 +49,13 @@ public class UserService {
                 );
         return this.mapper.toResponseDto(entity);
     }
+
+    public UserResponseDto view(Long id) {
+        UserEntity entity = this.repository
+                .findById(id)
+                .orElseThrow(() ->
+                        new UserNotFoundException(id)
+                );
+        return this.mapper.toResponseDto(entity);
+    }
 }

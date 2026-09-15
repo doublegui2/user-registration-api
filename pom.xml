@@ -10,9 +10,9 @@
     </parent>
     <groupId>org.atos</groupId>
     <artifactId>UserRegistrationMS</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>AtosAirFranceTest</name>
-    <description>AtosAirFranceTest</description>
+    <version>1.0.0</version>
+    <name>user-registration-ms</name>
+    <description>UserRegistrationMS</description>
     <url/>
     <licenses>
         <license/>
