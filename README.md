@@ -36,6 +36,10 @@ This project exposes two endpoints:
 - GET to view an existing user info at `/user/view/{username}`
   - requires the username as a path variable in the URL: `http://localhost:8080/user/view/user1`
 
+In the `postman` folder you can find a JSON file corresponding to a Postman collection regrouping various requests to showcase the endpoints and their exceptions.
+To use it, start the Springboot project as well as Postman. Import the collection into Postman into your local environment, then run either each request individually or the whole collection.
+You can run any request in any order with no issue, however if you also run manual request, you *might* add a user that is used in the collection.
+
 ## Starting the project
 
 You can start the project using the following:

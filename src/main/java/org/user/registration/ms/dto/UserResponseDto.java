@@ -9,14 +9,14 @@ import java.time.Instant;
 import java.util.Locale;
 
 public record UserResponseDto(
-        @NotBlank
+        @NotBlank(message = "must not be blank")
         String username,
 
-        @NotBlank
+        @NotBlank(message = "must not be blank")
         @ValidBirthdate
         String birthdate,
 
-        @NotBlank
+        @NotBlank(message = "code must not be blank")
         @ValidCountry
         String countryOfResidence,
 

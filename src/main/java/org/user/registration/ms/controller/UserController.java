@@ -26,7 +26,7 @@ public class UserController {
                 .body(userResponseDto);
     }
 
-    @GetMapping("/view/{username}")
+    @GetMapping("/view/username/{username}")
     public ResponseEntity<UserResponseDto> viewUser(@PathVariable String username) {
         UserResponseDto userResponseDto = this.userService.view(username);
         return ResponseEntity
@@ -34,7 +34,7 @@ public class UserController {
                 .body(userResponseDto);
     }
 
-    @GetMapping("/view/{id}")
+    @GetMapping("/view/id/{id}")
     public ResponseEntity<UserResponseDto> viewUser(@PathVariable Long id) {
         UserResponseDto userResponseDto = this.userService.view(id);
         return ResponseEntity

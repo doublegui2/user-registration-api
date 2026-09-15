@@ -9,6 +9,9 @@ import java.util.Locale;
 public class CountryValidator implements ConstraintValidator<ValidCountry, String> {
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
+        if (value == null || value.isBlank()) {
+            return true;
+        }
         return Locale.getISOCountries(Locale.IsoCountryCode.PART1_ALPHA3).contains(value);
     }
 }

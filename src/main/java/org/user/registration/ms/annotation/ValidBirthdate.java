@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = ISO8601Validator.class)
 public @interface ValidBirthdate {
 
-    String message() default "Invalid birthdate format, please use 'YYYY-MM-DD'";
+    String message() default "format not valid, please use ISO-8601 format 'YYYY-MM-DD'";
 
     Class<?>[] groups() default {};
 

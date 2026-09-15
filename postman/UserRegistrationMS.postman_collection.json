@@ -1,0 +1,492 @@
+{
+  "info": {
+    "_postman_id": "04381624-0545-490d-a9a2-b583635ec6cb",
+    "name": "UserRegistrationMS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "10346524"
+  },
+  "item": [
+    {
+      "name": "Register user: valid",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 201 Created\", function () {\r\n    pm.response.to.have.status(201)\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"guillaume1\",\r\n    \"birthdate\": \"1997-10-08\",\r\n    \"countryOfResidence\": \"FRA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to register a valid user. Has a birthdate indicating being at least 18 years old, and is a French resident.\n\nShould return '201 Created' and the entity that has been added."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: username already taken",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 409 Conflict\", function () {\r\n    pm.response.to.have.status(409)\r\n});\r\n\r\npm.test(\"Returns username already exists error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"is not available\")\r\n});"
+            ]
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\nawait new Promise((resolve, reject) => {\r\n    pm.sendRequest({\r\n        url: \"http://localhost:8080/user/register\",\r\n        method: \"POST\",\r\n        header: {\r\n            \"Content-Type\": \"application/json\"\r\n        },\r\n        body: {\r\n            mode: \"raw\",\r\n            raw: JSON.stringify({\r\n                \"username\": \"takenUsr\",\r\n                \"birthdate\": \"1997-10-08\",\r\n                \"countryOfResidence\": \"FRA\",\r\n                \"phoneNumber\": \"06011897\",\r\n                \"gender\": \"MALE\"\r\n            })\r\n        }\r\n    }, function (err, res) {\r\n        if (err) {\r\n            reject(err);\r\n        } else {\r\n            console.log(\"Setup user response:\", res.code);\r\n            resolve();\r\n        }\r\n    });\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"takenUsr\",\r\n    \"birthdate\": \"1997-10-08\",\r\n    \"countryOfResidence\": \"FRA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user with a username that already exists in the database.\n\nShould return a '409 Conflict' and an error message with code \"USERNAME_EXCEPTION\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: missing username",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400)\r\n});\r\n\r\npm.test(\"Returns Validation Error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"username must not be blank\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"birthdate\": \"1997-10-08\",\r\n    \"countryOfResidence\": \"FRA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user with a missing property 'username'.\n\nShould return a '400 Bad Request' and an error message with code \"VALIDATION_ERROR\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: missing birthdate",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400)\r\n});\r\n\r\npm.test(\"Returns Validation Error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"birthdate must not be blank\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"username\",\r\n    \"countryOfResidence\": \"FRA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user with a missing property 'birthdate'.\n\nShould return a '400 Bad Request' and an error message with code \"VALIDATION_ERROR\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: missing countryOfResidence",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400)\r\n});\r\n\r\npm.test(\"Returns Validation Error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"countryOfResidence must not be blank\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"username\",\r\n    \"birthdate\": \"1997-10-08\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user with a missing property 'countryOfResidence'.\n\nShould return a '400 Bad Request' and an error message with code \"VALIDATION_ERROR\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: invalid birthdate format",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400)\r\n});\r\n\r\npm.test(\"Returns invalid birthdate format error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"birthdate format not valid\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"username\",\r\n    \"birthdate\": \"08-10-1997\",\r\n    \"countryOfResidence\": \"FRA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user with a birthdate not following the ISO-8601 format (yyyy-mm-dd).\n\nShould return a '400 Bad Request' and an error message with code \"VALIDATION_ERROR\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: invalid country code format",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 400 Bad Request\", function () {\r\n    pm.response.to.have.status(400)\r\n});\r\n\r\npm.test(\"Returns invalid country code format error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"country code format not valid\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"username\",\r\n    \"birthdate\": \"08-10-1997\",\r\n    \"countryOfResidence\": \"FR\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user with a country code not following the ISO-3166 ALPHA3 format (USA, FRA, etc.).\n\nShould return a '400 Bad Request' and an error message with code \"VALIDATION_ERROR\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: age not equal to or above 18",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 403 Forbidden\", function () {\r\n    pm.response.to.have.status(403)\r\n});\r\n\r\npm.test(\"Returns invalid age error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"User must be at least 18\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"username\",\r\n    \"birthdate\": \"2025-10-08\",\r\n    \"countryOfResidence\": \"FRA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user that is not a legal adult yet (according to France laws, 18+).\n\nShould return a '403 Forbidden' and an error message with code \"AGE_EXCEPTION\"."
+      },
+      "response": []
+    },
+    {
+      "name": "Register user: not a French resident",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 403 Forbidden\", function () {\r\n    pm.response.to.have.status(403)\r\n});\r\n\r\npm.test(\"Returns invalid age error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"User must be a French (FRA) resident\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"username\",\r\n    \"birthdate\": \"1997-10-08\",\r\n    \"countryOfResidence\": \"USA\",\r\n    \"phoneNumber\": \"06011897\",\r\n    \"gender\": \"MALE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "register"
+          ]
+        },
+        "description": "Request to try registering a user that is not a French resident.\n\nShould return a '403 Forbidden' and an error message with code \"COUNTRY_EXCEPTION\"."
+      },
+      "response": []
+    },
+    {
+      "name": "View user by username: existing user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\nawait new Promise((resolve, reject) => {\r\n    pm.sendRequest({\r\n        url: \"http://localhost:8080/user/register\",\r\n        method: \"POST\",\r\n        header: {\r\n            \"Content-Type\": \"application/json\"\r\n        },\r\n        body: {\r\n            mode: \"raw\",\r\n            raw: JSON.stringify({\r\n                \"username\": \"viewUsr\",\r\n                \"birthdate\": \"1997-10-08\",\r\n                \"countryOfResidence\": \"FRA\",\r\n                \"phoneNumber\": \"06011897\",\r\n                \"gender\": \"MALE\"\r\n            })\r\n        }\r\n    }, function (err, res) {\r\n        if (err) {\r\n            reject(err);\r\n        } else {\r\n            console.log(\"Setup user response:\", res.code);\r\n            resolve();\r\n        }\r\n    });\r\n});\r\n"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 302 Found\", function () {\r\n    pm.response.to.have.status(302)\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/view/username/viewUsr",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "view",
+            "username",
+            "viewUsr"
+          ]
+        },
+        "description": "Request to view user info given a username.\n\nShould return '302 Found' along with the user information."
+      },
+      "response": []
+    },
+    {
+      "name": "View user by username: non-existing user",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Returns 404 Not Found\", function () {\r\n    pm.response.to.have.status(404)\r\n});\r\n\r\npm.test(\"Returns user not found error\", function () {\r\n    const json = pm.response.json();\r\n    pm.expect(json.message).to.include(\"not found\")\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/user/view/username/viewUsr9999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "user",
+            "view",
+            "username",
+            "viewUsr9999999"
+          ]
+        },
+        "description": "Request to view user info given a username that does not exist.\n\nShould return '404 Not Found' along with code 'USER_NOT_FOUND'."
+      },
+      "response": []
+    }
+  ]
+}

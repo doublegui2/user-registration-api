@@ -13,7 +13,7 @@ public class ISO8601Validator implements ConstraintValidator<ValidBirthdate, Str
     @Override
     public boolean isValid(String dateStr, ConstraintValidatorContext context) {
         if (dateStr == null || dateStr.isBlank()) {
-            return false;
+            return true;
         }
         try {
             LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE);
