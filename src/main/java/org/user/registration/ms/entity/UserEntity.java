@@ -9,7 +9,7 @@ import java.time.Instant;
 public class UserEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -43,24 +43,28 @@ public class UserEntity {
 
     protected UserEntity() { }
 
-    private String getUsername() {
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getUsername() {
         return this.username;
     }
-    private void setUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    private String getBirthdate() {
+    public String getBirthdate() {
         return this.birthdate;
     }
-    private void setBirthdate(String birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
-    private String getCountryOfResidence() {
+    public String getCountryOfResidence() {
         return this.countryOfResidence;
     }
-    private void setCountryOfResidence(String countryOfResidence) {
+    public void setCountryOfResidence(String countryOfResidence) {
         this.countryOfResidence = countryOfResidence;
     }
 
@@ -76,5 +80,9 @@ public class UserEntity {
     }
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Instant createdAt() {
+        return this.createdAt;
     }
 }
