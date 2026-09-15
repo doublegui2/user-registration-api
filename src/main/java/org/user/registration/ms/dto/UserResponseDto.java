@@ -1,8 +1,8 @@
 package org.user.registration.ms.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import org.user.registration.ms.exception.IllegalBirthdateFormatException;
-import org.user.registration.ms.exception.IllegalCountryException;
+import org.user.registration.ms.annotation.ValidBirthdate;
+import org.user.registration.ms.annotation.ValidCountry;
 import org.user.registration.ms.validator.ISO8601Validator;
 
 import java.time.Instant;
@@ -13,9 +13,11 @@ public record UserResponseDto(
         String username,
 
         @NotBlank
+        @ValidBirthdate
         String birthdate,
 
         @NotBlank
+        @ValidCountry
         String countryOfResidence,
 
         String phoneNumber,
@@ -26,13 +28,9 @@ public record UserResponseDto(
         Instant createdAt
 ) {
     public UserResponseDto {
-        // Check if the birthdate follows the appropriate ISO-8601 format
-        if (!ISO8601Validator.isValidISO8601(birthdate)) {
-            throw new IllegalBirthdateFormatException("Birthdate must follow the ISO-8601 format: 'yyyy-mm-dd'");
-        }
         // Check if the country corresponds to a valid country code
         if (!Locale.getISOCountries(Locale.IsoCountryCode.PART1_ALPHA3).contains(countryOfResidence)) {
-            throw new IllegalCountryException("Country of residence must be a valid 3-letter code (ex: 'USA', 'FRA'");
+            throw new IllegalArgumentException("Country of residence must be a valid 3-letter code (ex: 'USA', 'FRA'");
         }
     }
 }
