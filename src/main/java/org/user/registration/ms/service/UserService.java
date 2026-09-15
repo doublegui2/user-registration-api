@@ -6,6 +6,7 @@ import org.user.registration.ms.dto.UserResponseDto;
 import org.user.registration.ms.entity.UserEntity;
 import org.user.registration.ms.exception.IllegalAgeException;
 import org.user.registration.ms.exception.IllegalCountryException;
+import org.user.registration.ms.exception.UserNotFoundException;
 import org.user.registration.ms.exception.UsernameAlreadyExistsException;
 import org.user.registration.ms.mapper.UserMapper;
 import org.user.registration.ms.repository.UserRepository;
@@ -40,8 +41,12 @@ public class UserService {
         return this.mapper.toResponseDto(entity);
     }
 
-    /*public UserResponseDto view(String username) {
-        Optional<UserEntity> entity = this.repository.findByUsername(username);
+    public UserResponseDto view(String username) {
+        UserEntity entity = this.repository
+                .findByUsername(username)
+                .orElseThrow(() ->
+                     new UserNotFoundException(username)
+                );
         return this.mapper.toResponseDto(entity);
-    }*/
+    }
 }
