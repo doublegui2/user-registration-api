@@ -1,4 +1,4 @@
-package org.user.registration.ms.controller;
+package org.user.registration.ms.unit.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.user.registration.ms.dto.UserRegistrationRequestDto;
 import org.user.registration.ms.dto.UserResponseDto;
-import org.user.registration.ms.service.UserService;
+import org.user.registration.ms.unit.service.UserService;
 
 @RestController
 @RequestMapping("/user")
@@ -26,9 +26,17 @@ public class UserController {
                 .body(userResponseDto);
     }
 
-    @GetMapping("/view/{username}")
+    @GetMapping("/view/username/{username}")
     public ResponseEntity<UserResponseDto> viewUser(@PathVariable String username) {
         UserResponseDto userResponseDto = this.userService.view(username);
+        return ResponseEntity
+                .status(HttpStatus.FOUND)
+                .body(userResponseDto);
+    }
+
+    @GetMapping("/view/id/{id}")
+    public ResponseEntity<UserResponseDto> viewUser(@PathVariable Long id) {
+        UserResponseDto userResponseDto = this.userService.view(id);
         return ResponseEntity
                 .status(HttpStatus.FOUND)
                 .body(userResponseDto);

@@ -1,4 +1,4 @@
-package org.user.registration.ms.service;
+package org.user.registration.ms.unit.service;
 
 import org.springframework.stereotype.Service;
 import org.user.registration.ms.dto.UserRegistrationRequestDto;
@@ -10,7 +10,7 @@ import org.user.registration.ms.exception.UserNotFoundException;
 import org.user.registration.ms.exception.UsernameAlreadyExistsException;
 import org.user.registration.ms.mapper.UserMapper;
 import org.user.registration.ms.repository.UserRepository;
-import org.user.registration.ms.validator.ISO8601Validator;
+import org.user.registration.ms.unit.validator.BirthdateValidator;
 
 @Service
 public class UserService {
@@ -26,7 +26,7 @@ public class UserService {
 
     public UserResponseDto register(UserRegistrationRequestDto registrationRequest) {
         // Check first if the request is from an adult (18+) French resident
-        if (!ISO8601Validator.isAbove18(registrationRequest.birthdate())) {
+        if (!BirthdateValidator.isAbove18(registrationRequest.birthdate())) {
             throw new IllegalAgeException("User must be at least 18 to register");
         }
         if (!registrationRequest.countryOfResidence().equalsIgnoreCase("FRA")) {
@@ -46,6 +46,15 @@ public class UserService {
                 .findByUsername(username)
                 .orElseThrow(() ->
                      new UserNotFoundException(username)
+                );
+        return this.mapper.toResponseDto(entity);
+    }
+
+    public UserResponseDto view(Long id) {
+        UserEntity entity = this.repository
+                .findById(id)
+                .orElseThrow(() ->
+                        new UserNotFoundException(id)
                 );
         return this.mapper.toResponseDto(entity);
     }

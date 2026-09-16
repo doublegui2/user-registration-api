@@ -6,14 +6,14 @@ import org.user.registration.ms.annotation.ValidCountry;
 
 public record UserRegistrationRequestDto(
 
-        @NotBlank
+        @NotBlank(message = "must not be blank")
         String username,
 
-        @NotBlank
+        @NotBlank(message = "must not be blank")
         @ValidBirthdate
         String birthdate,
 
-        @NotBlank
+        @NotBlank(message = "must not be blank")
         @ValidCountry
         String countryOfResidence,
 

@@ -2,7 +2,7 @@ package org.user.registration.ms.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import org.user.registration.ms.validator.CountryValidator;
+import org.user.registration.ms.unit.validator.CountryValidator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = CountryValidator.class)
 public @interface ValidCountry {
 
-    String message() default "Invalid country code";
+    String message() default "country code format not valid, please use ISO-3166 ALPHA3 format 'FRA'";
 
     Class<?>[] groups() default {};
 
