@@ -1,0 +1,59 @@
+2026-09-16T11:36:21.230+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] c.u.registration.ms.UserRegistrationMS   : Starting UserRegistrationMS using Java 26.0.2.1 with PID 17384 (C:\Users\a956719\OneDrive - Atos\Documents\Projects\Java\UserRegistrationMS\target\classes started by a956719 in C:\Users\a956719\OneDrive - Atos\Documents\Projects\Java\UserRegistrationMS)
+2026-09-16T11:36:21.232+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] c.u.registration.ms.UserRegistrationMS   : No active profile set, falling back to 1 default profile: "default"
+2026-09-16T11:36:21.270+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-09-16T11:36:21.271+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-09-16T11:36:21.836+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-16T11:36:21.875+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interface.
+2026-09-16T11:36:22.442+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-09-16T11:36:22.452+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-16T11:36:22.452+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-09-16T11:36:22.482+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1210 ms
+2026-09-16T11:36:22.707+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-16T11:36:22.749+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-09-16T11:36:23.029+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-16T11:36:23.051+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-16T11:36:23.176+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:usersdb user=SA
+2026-09-16T11:36:23.176+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-16T11:36:23.217+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:usersdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: USERSDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-16T11:36:23.791+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-16T11:36:23.823+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-16T11:36:23.839+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] c.u.r.ms.aspect.LoggingAspect            : ### LoggingAspect LOADED ###
+2026-09-16T11:36:23.903+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-16T11:36:24.076+02:00  WARN 17384 --- [UserRegistrationMS] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-16T11:36:24.456+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:usersdb'
+2026-09-16T11:36:24.568+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-09-16T11:36:24.587+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-09-16T11:36:24.639+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-09-16T11:36:24.643+02:00  INFO 17384 --- [UserRegistrationMS] [restartedMain] c.u.registration.ms.UserRegistrationMS   : Started UserRegistrationMS in 3.711 seconds (process running for 4.28)
+2026-09-16T11:36:25.021+02:00  INFO 17384 --- [UserRegistrationMS] [RMI TCP Connection(4)-192.168.6.210] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-16T11:36:25.022+02:00  INFO 17384 --- [UserRegistrationMS] [RMI TCP Connection(4)-192.168.6.210] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-16T11:36:25.023+02:00  INFO 17384 --- [UserRegistrationMS] [RMI TCP Connection(4)-192.168.6.210] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-09-16T11:36:36.937+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-1] c.u.r.ms.aspect.LoggingAspect            : Calling UserController.registerUser(..) with inputs [UserRegistrationRequestDto[username=viewUsr, birthdate=1997-10-08, countryOfResidence=FRA, phoneNumber=06011897, gender=MALE]]
+2026-09-16T11:36:36.938+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-1] c.u.r.ms.aspect.LoggingAspect            : Calling UserService.register(..) with inputs [UserRegistrationRequestDto[username=viewUsr, birthdate=1997-10-08, countryOfResidence=FRA, phoneNumber=06011897, gender=MALE]]
+2026-09-16T11:36:37.365+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-1] c.u.r.ms.aspect.LoggingAspect            : UserService.register(..) returned UserResponseDto[username=viewUsr, birthdate=1997-10-08, countryOfResidence=FRA, phoneNumber=06011897, gender=MALE, createdAt=2026-09-16T09:36:37.314379900Z]
+2026-09-16T11:36:37.367+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-1] c.u.r.ms.aspect.LoggingAspect            : UserService.register(..) processed in 428 ms
+2026-09-16T11:36:37.368+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-1] c.u.r.ms.aspect.LoggingAspect            : UserController.registerUser(..) returned <201 CREATED Created,UserResponseDto[username=viewUsr, birthdate=1997-10-08, countryOfResidence=FRA, phoneNumber=06011897, gender=MALE, createdAt=2026-09-16T09:36:37.314379900Z],[]>
+2026-09-16T11:36:37.370+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-1] c.u.r.ms.aspect.LoggingAspect            : UserController.registerUser(..) processed in 432 ms
+2026-09-16T11:36:37.490+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-2] c.u.r.ms.aspect.LoggingAspect            : Calling UserController.viewUser(..) with inputs [viewUsr]
+2026-09-16T11:36:37.490+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-2] c.u.r.ms.aspect.LoggingAspect            : Calling UserService.view(..) with inputs [viewUsr]
+2026-09-16T11:36:37.510+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-2] c.u.r.ms.aspect.LoggingAspect            : UserService.view(..) returned UserResponseDto[username=viewUsr, birthdate=1997-10-08, countryOfResidence=FRA, phoneNumber=06011897, gender=MALE, createdAt=2026-09-16T09:36:37.314380Z]
+2026-09-16T11:36:37.510+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-2] c.u.r.ms.aspect.LoggingAspect            : UserService.view(..) processed in 20 ms
+2026-09-16T11:36:37.510+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-2] c.u.r.ms.aspect.LoggingAspect            : UserController.viewUser(..) returned <302 FOUND Found,UserResponseDto[username=viewUsr, birthdate=1997-10-08, countryOfResidence=FRA, phoneNumber=06011897, gender=MALE, createdAt=2026-09-16T09:36:37.314380Z],[]>
+2026-09-16T11:36:37.510+02:00  INFO 17384 --- [UserRegistrationMS] [http-nio-8080-exec-2] c.u.r.ms.aspect.LoggingAspect            : UserController.viewUser(..) processed in 20 ms
+2026-09-16T11:37:16.830+02:00  INFO 17384 --- [UserRegistrationMS] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-16T11:37:16.836+02:00  INFO 17384 --- [UserRegistrationMS] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-16T11:37:16.839+02:00  INFO 17384 --- [UserRegistrationMS] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-16T11:37:16.843+02:00  WARN 17384 --- [UserRegistrationMS] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-240]
+2026-09-16T11:37:16.844+02:00  INFO 17384 --- [UserRegistrationMS] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-09-16T11:37:16.845+02:00  INFO 17384 --- [UserRegistrationMS] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
