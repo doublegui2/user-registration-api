@@ -3,7 +3,6 @@ package org.user.registration.ms.dto;
 import jakarta.validation.constraints.NotBlank;
 import org.user.registration.ms.annotation.ValidBirthdate;
 import org.user.registration.ms.annotation.ValidCountry;
-import org.user.registration.ms.validator.ISO8601Validator;
 
 import java.time.Instant;
 import java.util.Locale;

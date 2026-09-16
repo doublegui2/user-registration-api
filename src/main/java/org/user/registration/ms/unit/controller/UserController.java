@@ -1,4 +1,4 @@
-package org.user.registration.ms.controller;
+package org.user.registration.ms.unit.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.user.registration.ms.dto.UserRegistrationRequestDto;
 import org.user.registration.ms.dto.UserResponseDto;
-import org.user.registration.ms.service.UserService;
+import org.user.registration.ms.unit.service.UserService;
 
 @RestController
 @RequestMapping("/user")

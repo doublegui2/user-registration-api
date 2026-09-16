@@ -2,7 +2,7 @@ package org.user.registration.ms.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import org.user.registration.ms.validator.CountryValidator;
+import org.user.registration.ms.unit.validator.CountryValidator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

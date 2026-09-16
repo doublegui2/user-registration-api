@@ -1,4 +1,4 @@
-package org.user.registration.ms.validator;
+package org.user.registration.ms.unit.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

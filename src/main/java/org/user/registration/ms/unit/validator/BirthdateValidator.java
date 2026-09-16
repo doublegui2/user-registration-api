@@ -1,4 +1,4 @@
-package org.user.registration.ms.validator;
+package org.user.registration.ms.unit.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -9,7 +9,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class ISO8601Validator implements ConstraintValidator<ValidBirthdate, String> {
+public class BirthdateValidator implements ConstraintValidator<ValidBirthdate, String> {
     @Override
     public boolean isValid(String dateStr, ConstraintValidatorContext context) {
         if (dateStr == null || dateStr.isBlank()) {
